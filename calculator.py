@@ -75,3 +75,4 @@ def DoingSumAndSubtraction(list):
                 d -= int(k)
     return d
 print(DoingSumAndSubtraction(DoingMultiplicationAndDivision(GetWorkingData(expression))))
+123123123123123123
