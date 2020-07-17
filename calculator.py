@@ -2,9 +2,30 @@ expression = input("Введите выражение: ")
 def GetWorkingData(a):
     """Подготовка списка для произведения вычислений"""
     a = a.split(" ")
+    actions = ["-", "+", "*", "/"]
     items2 = []
     element = ''
     mistake_flag = False
+    for i in a:
+        if i.isdigit() or i == "i" or i == "+" or i == "-" or i == "*" or i == "/" or i == ".":
+            pass
+        else:
+            print("Ошибка ввода. Ввод букв допустим только при вводе комплексных чисел")
+            mistake_flag = True
+    if a[0] == "+" or a[0] == "*" or a[0] == "/" or a[0] == ".":
+        print("Ошибка ввода! Знак действия не может быть в начале выражения")
+    if a[-1] == "+" or a[-1] == "*" or a[-1] == "/" or a[-1] == ".":
+        print("Ошибка ввода! Знак действия не может быть в конце выражения")
+    if a[0] == "-" and a[1].isdigit():
+        if "." in a[1]:
+            a[0] = str(float(a[1]) * (-1))
+            a.pop(1)
+        else:
+            a[0] = str(int(a[1]) * (-1))
+            a.pop(1)
+    elif a[0] == "-" and not a[1].isdigit():
+        print("Ошибка ввода!")
+        mistake_flag = True
     for i in a:
         if mistake_flag:
             break
